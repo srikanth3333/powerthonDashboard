@@ -28,7 +28,9 @@ function TableData({data,paginateApi,filters,paginate}) {
           title: `${Str(item).replaceAll('_', ' ').title().get()}`,
           dataIndex: `${item}`,
           key: i,
-          width: 200,
+          width: 120,
+          textWrap: 'word-break',
+          ellipsis: true,
           fixed: i < 1 ? 'left' : null,
       }
   })

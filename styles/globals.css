@@ -53,6 +53,7 @@ p {
  /* sidebar */
 .default-sidebar {
   width: 25%;
+  transition: 1s ease;
 }
 
 .content {
