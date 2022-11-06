@@ -26,20 +26,20 @@ let listItems = [
     },
 ]
 
-function Sidebar({matches,setSidebarActive}) {
+function Sidebar({activeSidebar,setActiveSidebar,targetReached}) {
 
   const router = useRouter();
+
   return (
     <div className="sidebar">
         <div className="card py-1 shadow-md">
             <div className="card-body">
                 <div className="logo-box text-center">
                     {
-                        matches == true ?
-                            <div className="d-flex justify-content-end">
-                                <CloseOutlined className="icon" onClick={() => setSidebarActive(false)} />
-                            </div>
-                        : null
+                        targetReached == true ?
+                        <div className="d-flex justify-content-end">
+                            <CloseOutlined className="icon" onClick={() => setActiveSidebar(!activeSidebar)} />
+                        </div> : null
                     }
                     
                     <hr />
@@ -51,7 +51,7 @@ function Sidebar({matches,setSidebarActive}) {
                 <div className="list-items">
                         {
                             listItems.map((item,i) => (
-                                <Link onClick={() => setSidebarActive(false)} href={`${item.link}`} key={i} className={router.pathname == `${item.link}` ? `a-active` : ''}>
+                                <Link href={`${item.link}`} onClick={() => setActiveSidebar(false)} key={i} className={router.pathname == `${item.link}` ? `a-active` : ''}>
                                     <div className={router.pathname == `${item.link}` ? `active d-flex list-item` : 'd-flex list-item'}>
                                         <HomeFilled className="me-3" />
                                         <p>

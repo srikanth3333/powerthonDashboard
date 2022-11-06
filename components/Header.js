@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import {capitalizeFirstLetter} from "../utils/textUtils"
 import Link from 'next/link'
 
-function Header({sidebarActive,setSidebarActive}) {
+function Header({activeSidebar,setActiveSidebar,targetReached}) {
  
  const router = useRouter();
 
@@ -14,7 +14,11 @@ function Header({sidebarActive,setSidebarActive}) {
     <>
         <div className="d-flex justify-content-between align-items-center flex-wrap">
             <div>
-                <AlignLeftOutlined className="icon" onClick={() => setSidebarActive(!sidebarActive)} />
+                {
+                    targetReached == true ?
+                    <AlignLeftOutlined className="icon" onClick={() => setActiveSidebar(!activeSidebar)} />
+                    : null
+                }
                 <Breadcrumb className="text-white">
                     <Breadcrumb.Item>
                         <Link href="/" className="text-white">{'Home'}</Link>

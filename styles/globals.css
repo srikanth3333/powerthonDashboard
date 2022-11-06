@@ -5,11 +5,6 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif !important;
   background-color: #EFF2F3 !important;
-  overflow-x: hidden;
-}
-
-.banner {
-  overflow-x: hidden;
 }
 
 a {
@@ -56,6 +51,14 @@ p {
 }
 
  /* sidebar */
+.default-sidebar {
+  width: 25%;
+}
+
+.content {
+  width: 70%;
+}
+
 .sidebar .list-items .list-item {
   list-style-type: none;
   padding: 1em 1em;
@@ -146,21 +149,22 @@ label {
   border-color: #3A116D !important;
 }
 
-.fix {
-  z-index: 999;
-}
 
-@media only screen and (max-width: 1348px) {
-  .layout {
-    padding: 0px;
-  }
-  .container-fluid {
-    padding: 0px;
-  }
-  .fix {
+
+@media only screen and (max-width: 1228px) {
+  .content-sidebar {
+    /* display: none; */
+    position: fixed;
     z-index: 999;
-    height: 100% !important;
-    width: 90%;
+    left: 0;
+    height: 100%;
+    overflow-y: scroll;
+    width: 80%;
+    top:0;
   }
-  
+
+  .content {
+    width: 100%;
+  }
+
 }

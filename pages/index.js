@@ -4,6 +4,8 @@ import FilterCard from '../components/FilterCard';
 import TableData from "../components/TableData";
 
 export default function Home() {
+
+  
   return (
     <div>
       <Head>
