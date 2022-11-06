@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Inter', sans-serif !important;
+  background-color: #EFF2F3 !important;
+  overflow-x: hidden;
+}
+
+.banner {
+  overflow-x: hidden;
 }
 
 a {
@@ -11,16 +17,150 @@ a {
   text-decoration: none;
 }
 
+.icon {
+  font-size: 25px; 
+  margin-bottom: 15px;
+}
+
 * {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.color-purple {
+  color: #3A116D;
+}
+
+.color-light {
+  color: #8B98A8;
+}
+
+.color-dark {
+  color: #000;
+}
+
+h5 {
+  font-size: 1.5em;
+}
+
+ h6 {
+  font-size: 1.2em;
+ }
+
+.btn-light {
+  background-color: #8A8A8A;
+  color: #fff;
+}
+
+p {
+  margin-bottom: 0px !important;
+}
+
+ /* sidebar */
+.sidebar .list-items .list-item {
+  list-style-type: none;
+  padding: 1em 1em;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.sidebar .list-items a {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  /* text-align: center; */
+  color: #8B98A8;
+}
+
+.sidebar .list-items .active {
+  background-color: #F0F3F7;
+  font-weight: 700;
+}
+
+.sidebar .list-items .list-item:hover {
+  background-color: #F0F3F7;
+  transition: 0.7s ease;
+}
+
+.sidebar .list-items .a-active {
+  color: #3A116D;
+}
+
+/* layout */
+.layout {
+  padding: 1em;
+  position: relative;
+}
+
+.banner {
+  min-height: 40vh;
+  background-image: linear-gradient(101.21deg, rgba(247, 197, 20, 0.76) 29.59%, rgba(235, 128, 2, 0.76) 62.85%),url("../public/img/banner-bg.png");
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.count-name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.count-count {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
+
+  color: #3A116D;
+}
+
+
+.count-icon {
+  font-size: 5em;
+  color: #F7C514 !important;
+}
+
+.filter-card-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: #000000;
+}
+
+label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+  margin: 0.3em 0em;
+}
+
+
+.ant-btn-primary {
+  background-color: #3A116D !important;
+  border-color: #3A116D !important;
+}
+
+.fix {
+  z-index: 999;
+}
+
+@media only screen and (max-width: 1348px) {
+  .layout {
+    padding: 0px;
   }
-  body {
-    color: white;
-    background: black;
+  .container-fluid {
+    padding: 0px;
   }
+  .fix {
+    z-index: 999;
+    height: 100% !important;
+    width: 90%;
+  }
+  
 }
