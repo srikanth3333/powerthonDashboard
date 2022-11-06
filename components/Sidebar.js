@@ -51,7 +51,7 @@ function Sidebar({activeSidebar,setActiveSidebar,targetReached}) {
                 <div className="list-items">
                         {
                             listItems.map((item,i) => (
-                                <Link href={`${item.link}`} onClick={() => setActiveSidebar(false)} key={i} className={router.pathname == `${item.link}` ? `a-active` : ''}>
+                                <Link href={`${item.link}`} onClick={() => targetReached == true ? setActiveSidebar(false) : null} key={i} className={router.pathname == `${item.link}` ? `a-active` : ''}>
                                     <div className={router.pathname == `${item.link}` ? `active d-flex list-item` : 'd-flex list-item'}>
                                         <HomeFilled className="me-3" />
                                         <p>
