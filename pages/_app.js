@@ -11,7 +11,7 @@ import loader from "../utils/loading.json";
 
 function MyApp({ Component, pageProps }) {
 
-  const [loading,setLoading] = React.useState(false)
+  const [loading,setLoading] = React.useState(true)
 
   React.useEffect(() => {
     setTimeout(() => {
