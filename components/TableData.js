@@ -4,10 +4,22 @@ import {useSelector,useDispatch} from 'react-redux';
 import {capitalizeFirstLetter} from "../utils/textUtils"
 import Moment from 'react-moment';
 import moment from 'moment';
+import React from "react";
+import {addFilters} from "../redux/auth/userSlice";
+
 const Str = require('@supercharge/strings')
 
 
 function TableData({data,paginateApi,filters,paginate}) {
+
+  let filtersData = useSelector((state) => state.auth)
+  let dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(addFilters({date:{}}))
+  },[])
+
+  console.log(filtersData.filterObject)
 
   if(!data || !data.data) {
     return (
@@ -19,7 +31,7 @@ function TableData({data,paginateApi,filters,paginate}) {
     )
   }
 
-  let dispatch = useDispatch()
+  
   let pageCount = parseInt(data.totalCount / 20);
 
   let objectData = data.data.find((item,index) => index == 0)
@@ -68,7 +80,7 @@ function TableData({data,paginateApi,filters,paginate}) {
                 pageSize:20,
                 total: pageCount,
                 onChange: (page) => {
-                  dispatch(paginateApi({...filters,page:page}))
+                  dispatch(paginateApi({...filtersData.filterObject,page:page}))
                 },
               } : false}
             />

@@ -7,10 +7,7 @@ export const userSlice = createSlice({
 		loading: true,
 		error:'',
 		dataUser: [],
-		selectedCategory:'',
-		selectedCircle:'',
-		selectedDivision:'',
-		selectedSubDivision:'',
+		filterObject:null,
 		category:[
 			{
 				_id:'',
@@ -477,11 +474,7 @@ export const userSlice = createSlice({
 	},
 	reducers: {
 		addFilters: (state,action) => {
-			state.selectedCategory = action.payload.data.category
-			state.selectedCircle = action.payload.data.circle_name 
-			state.selectedDivision = action.payload.data.division_name
-			state.selectedSubDivision = action.payload.data.subdivision_name
-			// state.circleData = state.circleData.find((item) => item._id == action.payload.data.category).list
+			state.filterObject = action.payload.data
 		},
 	}
 	
