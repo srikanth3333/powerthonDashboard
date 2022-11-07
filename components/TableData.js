@@ -2,6 +2,8 @@
 import {Table} from "antd";
 import {useSelector,useDispatch} from 'react-redux';
 import {capitalizeFirstLetter} from "../utils/textUtils"
+import Moment from 'react-moment';
+import moment from 'moment';
 const Str = require('@supercharge/strings')
 
 
@@ -28,10 +30,24 @@ function TableData({data,paginateApi,filters,paginate}) {
           title: `${Str(item).replaceAll('_', ' ').title().get()}`,
           dataIndex: `${item}`,
           key: i,
-          width: 120,
+          width: 180,
           textWrap: 'word-break',
           ellipsis: true,
-          fixed: i < 1 ? 'left' : null,
+          // fixed: i < 1 ? 'left' : null,
+          render: (val) => (
+            <>
+              {
+                  moment(val, moment.ISO_8601, true).isValid() && val != null && typeof val !== 'number'
+                  ?
+                      <>
+                          <Moment format="DD/MM/YYYY">{val}</Moment> <br />
+                          <Moment format="hh:mm:ss A">{val}</Moment>
+                      </>
+                  :
+                      val
+              }
+            </>
+          )
       }
   })
 

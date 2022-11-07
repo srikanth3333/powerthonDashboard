@@ -169,3 +169,8 @@ label {
   }
 
 }
+
+.antd-table-custom-class thead th, .antd-table-custom-class tbody td {
+  white-space:pre-wrap;
+  text-overflow: ellipsis
+ }
