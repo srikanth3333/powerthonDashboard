@@ -24,7 +24,6 @@ function Layout({children}) {
       return () => media.removeEventListener('change', updateTarget)
     }, [])
 
-    console.log(targetReached)
 
   return (
     <>

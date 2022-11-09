@@ -24,6 +24,10 @@ let listItems = [
         label: 'Billing Complaints Data',
         link: '/customerComplaints'
     },
+    {
+        label: 'Payments',
+        link: '/payments'
+    },
 ]
 
 function Sidebar({activeSidebar,setActiveSidebar,targetReached}) {

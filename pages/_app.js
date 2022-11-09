@@ -7,7 +7,12 @@ import store from '../redux/store';
 import {Provider} from 'react-redux';
 import Lottie from "lottie-react";
 import loader from "../utils/loading.json";
+// import { Inter } from '@next/font/google'
 
+
+// const inter = Inter({
+//   variable: '--inter-font',
+// })
 
 function MyApp({ Component, pageProps }) {
 
