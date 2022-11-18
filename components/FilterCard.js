@@ -4,6 +4,8 @@ import {useDispatch} from 'react-redux';
 import {addFilters} from "../redux/auth/userSlice";
 import Download from "./Download";
 import {getHierarchyData} from "../redux/hierarchy/hierarchySlice";
+import moment from 'moment';
+
 
 function FilterCard({title,objectData,paginateApi,data,finalCount,
                     download,db,selectLoading,staticData}) {
@@ -24,10 +26,13 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
                     }
   
   const onChangeHandler = (val,lop) => {
+    
     setObjArr({...objArr, [lop]:val})
     dispatch(paginateApi({...objArr, [lop]:val}))
     dispatch(addFilters({"data":{...objArr, [lop]:val}}))
     dispatch(getHierarchyData({...objArr, [lop]:val,"db":db}))
+    console.log('filter....')
+    console.log({...objArr, [lop]:val})
   }
 
   useEffect(() => {
@@ -128,7 +133,10 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
                                         format="DD-MM-YYYY" 
                                         style={{width:'100%'}} 
                                         onChange={(date,dateString) => {
-                                            return onChangeHandler(date && date._d,item.value)
+                                            let finalDate = moment(date).format('YYYY-MM-DD');;
+                                            console.log('finalDate');
+                                            console.log(finalDate);
+                                            return onChangeHandler(finalDate,item.value)
                                         }} />
                                 </div>
                             </>

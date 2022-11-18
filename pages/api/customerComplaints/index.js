@@ -77,7 +77,7 @@ export default async function handler(req, response) {
               },
           },
         ]).toArray();
-      response.status(200).json({totalCount: totalCount,data: data});
+      return response.status(200).json({totalCount: totalCount,data: data});
     }
     
 }

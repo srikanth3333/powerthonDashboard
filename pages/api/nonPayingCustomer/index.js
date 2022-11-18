@@ -8,7 +8,7 @@ export default async function handler(request, response) {
 
     await collection.find(query).limit(10).toArray((err, result) => {
       if (err) throw err;
-      response.status(200).json(result);
+      return response.status(200).json(result);
     })
 
 }

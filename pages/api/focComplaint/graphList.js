@@ -46,7 +46,7 @@ export default async function handler(req, response) {
           {$group: {_id:"$circle_name",count:{$sum:"$delay"}}},
           {$sort:{count:1}}
      ]).toArray();
-      response.status(200).json(barGraphData);
+     return response.status(200).json(barGraphData);
     }
 }
 

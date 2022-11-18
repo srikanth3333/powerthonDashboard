@@ -6,20 +6,14 @@ export default async function handler(req, response) {
     const { database } = await connectToDatabase();
     
     if(req.method === "POST") {
-
-      if(req.body.db) {
-
       let query = {}
       let dbName = "bill_complaint_ivrs_mobileno"
 
       if(req.body.db) {
         dbName = req.body.db.toString()
       }
-
       const collection = database.collection(dbName)
-
       console.log(dbName)
-
       if(req.body.division_name) {
         query = {...query, "division_name": req.body.division_name};
       }
@@ -66,8 +60,6 @@ export default async function handler(req, response) {
               circle_name:1, region:1, dc_name:1,feeder_type:1,bill_division:1,zone:1}}
       ]).toArray();
 
-      response.status(200).send(data);
+      return response.status(200).send(data);
     }
-  }
-   
 }

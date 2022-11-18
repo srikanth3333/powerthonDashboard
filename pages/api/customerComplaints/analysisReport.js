@@ -1,5 +1,11 @@
 import { connectToDatabase } from "../../../lib/mongodb";
 
+export const config = {
+  api: {
+    externalResolver: true,
+  },
+}
+
 export default async function handler(req, response) {
     
     if(req.method == "POST") {
@@ -64,5 +70,4 @@ export default async function handler(req, response) {
         ]).toArray();
         Promise.all([totalCount,data]).then(() => response.status(200).json({totalCount: totalCount,data: data}))
     }
-    
 }

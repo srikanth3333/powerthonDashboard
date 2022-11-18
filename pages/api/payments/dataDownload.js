@@ -41,7 +41,7 @@ export default async function handler(req, response) {
               },
           },
         ]).toArray();
-      response.status(200).json({data: data});
+      return response.status(200).json({data: data});
     }
     
 }

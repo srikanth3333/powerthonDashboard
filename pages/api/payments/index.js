@@ -45,7 +45,7 @@ export default async function handler(req, response) {
             },
             // {$sort:{"delay":1}}
         ]).toArray();
-      response.status(200).json({totalCount: totalCount,data:data});
+      return  response.status(200).json({totalCount: totalCount,data:data});
     }
    
 }
