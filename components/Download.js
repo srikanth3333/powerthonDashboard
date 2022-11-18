@@ -4,12 +4,14 @@ import { DownloadOutlined } from '@ant-design/icons';
 import { CSVLink } from "react-csv";
 import axios from 'axios';
 import { useRouter } from "next/router";
+import Messages from "./Messages";
 
-function Download({apiObject,finalCount}) {
+function Download({apiObject,finalCount,download,dataDownload}) {
 
     let [downloadDataArray,setDownloadDataArray] = useState([]);
     let [dataLoading,setDataLoading] = useState(false)
     let [count,setCount] = useState(0)
+    const [showMessage, setShowMessage] = useState(false);
 
     const router = useRouter();
 
@@ -24,7 +26,6 @@ function Download({apiObject,finalCount}) {
             console.log('started', count)
             await axios.post(`/api/${router.pathname}/dataDownload?page=${i}`,apiObject)
             .then(res => {
-                
                 setDownloadDataArray(oldArray => [...oldArray, res.data.data]);
             })
             .catch(err => {
@@ -38,16 +39,35 @@ function Download({apiObject,finalCount}) {
             console.log(downloadDataArray)
             setDownloadDataArray([])
         },1000)
+        setShowMessage(true)
+        setTimeout(() => {
+            setShowMessage(false)
+        }, 3500)
     }
+
+    const staticDownload = () => {
+        setDownloadDataArray(dataDownload.data)
+        setTimeout(() => {
+            let button = document.getElementById('dn-btn')
+            button.click();
+            setDownloadDataArray([])
+        },1000)
+        setShowMessage(true)
+        setTimeout(() => {
+            setShowMessage(false)
+        }, 3500)
+    }
+    
 
   return (
     <div>
+        {showMessage && <Messages type='success' messageText="Download was successful" />}
         {
             dataLoading == true ?
                 <Progress type="circle" percent={Math.ceil(count / finalCount * 100)} width={40} />
             :
             <div>
-                <Button onClick={() => downloadData()} type="primary" shape="round" icon={<DownloadOutlined />} size={"medium"}>
+                <Button onClick={() => download == false ? staticDownload() : downloadData()} type="primary" shape="round" icon={<DownloadOutlined />} size={"medium"}>
                     Download Excel
                 </Button>
             </div>

@@ -7,10 +7,13 @@ import store from '../redux/store';
 import {Provider} from 'react-redux';
 import Lottie from "lottie-react";
 import loader from "../utils/loading.json";
+import { useRouter } from "next/router";
+
 
 function MyApp({ Component, pageProps }) {
 
   const [loading,setLoading] = React.useState(true)
+  const router = useRouter();
 
 
   React.useEffect(() => {
@@ -27,6 +30,14 @@ function MyApp({ Component, pageProps }) {
     )
   }
   
+  if(['/login'].includes(router.pathname)) {
+    return (
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    )
+  }
+
   return (
     <Layout>
       <Provider store={store}>

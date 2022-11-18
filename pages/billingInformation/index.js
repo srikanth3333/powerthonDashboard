@@ -18,6 +18,8 @@ export default function index() {
         dispatch(getBlillingData(apiObject))
     },[])
 
+  let filteredZoneData = filtersData.zone.filter((item) => item.division == filtersData.filterObject?.division_name)?.map((text) => text.zone)
+
   return (
     <div>
       <Head>
@@ -37,9 +39,10 @@ export default function index() {
                 objectData={apiObject}
                 paginateApi={getBlillingData}
                 staticData={true}
+                loadingState={data.loading}
                 data={[
                   {label:"Division",type:"select",value:"division_name",filterList:filtersData.bill_division},
-                  {label:"Zone",type:"select",value:"circle_name",filterList:filtersData.zone},
+                  {label:"Zone",type:"select",value:"circle_name",filterList:filteredZoneData},
                   {label:"Consumer No",type:"text",value:"consumerNo"},
                   {label:"Start Date",type:"date",value:"startDate"},
                   {label:"End Date",type:"date",value:"endDate"},

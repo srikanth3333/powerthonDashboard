@@ -44,6 +44,7 @@ export default function index() {
                 download={false}
                 db="bill_complaint_ivrs_mobileno"
                 selectLoading={filtersData.loading}
+                dataDownload={data} 
                 data={[
                   {label:"Circle",type:"select",value:"circle_name",filterList:filtersData.data[0]?.circle_name},
                   {label:"Division",type:"select",value:"division_name",filterList:filtersData.data[0]?.division},

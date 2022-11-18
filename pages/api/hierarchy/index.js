@@ -1,19 +1,26 @@
 import { connectToDatabase } from "../../../lib/mongodb";
+import cacheData from "memory-cache";
 
 
 export default async function handler(req, response) {
 
     const { database } = await connectToDatabase();
     
+    
     if(req.method === "POST") {
       let query = {}
-      let dbName = "bill_complaint_ivrs_mobileno"
+      let dbName = "FOC_ivrs_mobileno"
+
+      // const value = cacheData.get(dbName);
+
+      // if(value) {
+      //   return response.status(200).send(value);
+      // }
 
       if(req.body.db) {
         dbName = req.body.db.toString()
       }
       const collection = database.collection(dbName)
-      console.log(dbName)
       if(req.body.division_name) {
         query = {...query, "division_name": req.body.division_name};
       }
@@ -59,7 +66,7 @@ export default async function handler(req, response) {
             {$project: {_id:0, division:1, subdivision:1, category:1, sub_category:1, 
               circle_name:1, region:1, dc_name:1,feeder_type:1,bill_division:1,zone:1}}
       ]).toArray();
-
+      // cacheData.put(dbName, data, 100)
       return response.status(200).send(data);
     }
 }
