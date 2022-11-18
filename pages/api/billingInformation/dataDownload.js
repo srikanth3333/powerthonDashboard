@@ -1,5 +1,11 @@
 import { connectToDatabase } from "../../../lib/mongodb";
 
+export const config = {
+  api: {
+    responseLimit: false,
+  },
+}
+
 export default async function handler(req, response) {
     
     const { database } = await connectToDatabase();
@@ -25,7 +31,7 @@ export default async function handler(req, response) {
       }
       
       if(req.body.division_name) {
-        query = {...query, "divisionId": req.body.division_name};
+        query = {...query, "Division": req.body.division_name};
       }
 
       if(req.body.region) {
@@ -41,10 +47,11 @@ export default async function handler(req, response) {
       }
   
       if(req.body.startDate && req.body.endDate && req.body.startDate != null && req.body.endDate != null) {
-        query = {...query, "bill_month": {$gt:new Date(req.body.startDate),$lt:new Date(req.body.endDate)}};
+        query = {...query, "bill_month": {$gte:new Date(req.body.startDate),$lte:new Date(req.body.endDate)}};
       }
 
 
+      console.log('query')
       console.log(query)
       console.log(req.query.page)
       let data = await collection.aggregate(

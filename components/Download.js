@@ -24,6 +24,7 @@ function Download({apiObject,finalCount}) {
             console.log('started', count)
             await axios.post(`/api/${router.pathname}/dataDownload?page=${i}`,apiObject)
             .then(res => {
+                
                 setDownloadDataArray(oldArray => [...oldArray, res.data.data]);
             })
             .catch(err => {
@@ -34,6 +35,7 @@ function Download({apiObject,finalCount}) {
         setTimeout(() => {
             let button = document.getElementById('dn-btn')
             button.click();
+            console.log(downloadDataArray)
             setDownloadDataArray([])
         },1000)
     }

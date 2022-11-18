@@ -1,5 +1,13 @@
 import { connectToDatabase } from "../../../lib/mongodb";
 
+
+
+export const config = {
+  api: {
+    responseLimit: false,
+  },
+}
+
 export default async function handler(req, response) {
     
     if(req.method == "POST") {

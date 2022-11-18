@@ -1,11 +1,29 @@
 import Head from 'next/head'
+import React from 'react';
 import CountCard from '../components/CountCard';
 import FilterCard from '../components/FilterCard';
 import TableData from "../components/TableData";
+import axios from 'axios';
 
 
 export default function Home() {
 
+  const downloadData = async () => {
+    console.log('triggerd')
+    await axios.post(`http://localhost:3000/api/billingInformation/dataDownload?page=0`)
+    .then(res => {
+        console.log('res')
+        console.log(res)
+        // setDownloadDataArray(oldArray => [...oldArray, res.data.data]);
+    })
+    .catch(err => {
+        console.log(JSON.stringify(err))
+    })   
+  }
+
+  React.useEffect(() => {
+    downloadData()
+  },[])
   
   return (
     <div>
