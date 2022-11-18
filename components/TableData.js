@@ -19,8 +19,6 @@ function TableData({data,paginateApi,filters,paginate}) {
     dispatch(addFilters({date:{}}))
   },[])
 
-  console.log(filtersData.filterObject)
-
   if(!data || !data.data) {
     return (
       <>

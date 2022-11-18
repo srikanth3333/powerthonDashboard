@@ -6,7 +6,7 @@ export const getFocData = createAsyncThunk('foc/focData',
         let data = {
             startDate:payload.startDate,
             endDate:payload.endDate,
-            category:payload.category,
+            feeder_type:payload.feeder_type,
             circle_name:payload.circle_name,
             division_name:payload.division_name,
             subdivision_name:payload.subdivision_name,

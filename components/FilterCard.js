@@ -1,30 +1,44 @@
-import {useState} from 'react';
-import { Input,Select, DatePicker,Button } from 'antd';
-import {useSelector,useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+import { Input,Select, DatePicker,Button, Spin } from 'antd';
+import {useDispatch} from 'react-redux';
 import {addFilters} from "../redux/auth/userSlice";
 import Download from "./Download";
+import {getHierarchyData} from "../redux/hierarchy/hierarchySlice";
 
-function FilterCard({title,objectData,paginateApi,data,finalCount, download}) {
+function FilterCard({title,objectData,paginateApi,data,finalCount,
+                    download,db,selectLoading,staticData}) {
 
   const [objArr, setObjArr] = useState(objectData)
   let dispatch = useDispatch();
+  let filtersObject = {
+                        "category": "",
+                        "circle_name": "",
+                        "division_name": "",
+                        "subdivision_name": "",
+                        "division_name": "",
+                        "sub_category": "",
+                        "dc_name": "",
+                        "region": "",
+                        "feeder_type":"",
+                        "db":db
+                    }
   
   const onChangeHandler = (val,lop) => {
     setObjArr({...objArr, [lop]:val})
     dispatch(paginateApi({...objArr, [lop]:val}))
     dispatch(addFilters({"data":{...objArr, [lop]:val}}))
+    dispatch(getHierarchyData({...objArr, [lop]:val,"db":db}))
   }
+
+  useEffect(() => {
+    dispatch(getHierarchyData(filtersObject))
+  }, [])
 
   const handleReset = () => {
     setObjArr(objectData)
     dispatch(paginateApi(objectData))
+    dispatch(getHierarchyData(filtersObject))
   }
-
-  let filterAreas = (selectedItem,selectedData,label) => 
-                    selectedItem != '' ? selectedData.find(item => item._id == selectedItem).list
-                    :  null
-
-  let mainObj = (selectedItem,selectedData,label) => selectedData.map((item) => item.list)
 
 
   return (
@@ -57,32 +71,50 @@ function FilterCard({title,objectData,paginateApi,data,finalCount, download}) {
                             <>
                                 <div className="col-lg-3">
                                 <label htmlFor="">{item.label}</label>
-                                    <Select
-                                        allowClear
-                                        showSearch
-                                        value={objArr && objArr[item.value]}
-                                        style={{ width: '100%' }}
-                                        onChange={(val) => onChangeHandler(val,item.value)}
-                                    >
-                                        {/* {
-                                              filterAreas(item.selected,item.filterList,item.label) !== null 
-                                            ? filterAreas(item.selected,item.filterList,item.label).map((val, index) => (
-                                                <Select.Option value={val} key={index}> 
-                                                    {val}
-                                                </Select.Option>
-                                            )) : null
-                                        } */}
-
-                                        {
-                                              mainObj(item.selected,item.filterList,item.label).flat() !== null 
-                                            ? mainObj(item.selected,item.filterList,item.label).flat().map((val, index) => (
-                                                <Select.Option value={val} key={index}> 
-                                                    {val}
-                                                </Select.Option>
-                                            )) : null
-                                        }
-                                        
-                                    </Select>
+                                    {
+                                        staticData == true
+                                        ?
+                                            <Select
+                                                allowClear
+                                                showSearch
+                                                value={objArr && objArr[item.value]}
+                                                style={{ width: '100%' }}
+                                                onChange={(val) => onChangeHandler(val,item.value)}
+                                                >
+                                                {
+                                                    item.filterList?.map((val, index) => (
+                                                        <Select.Option value={val} key={index}> 
+                                                            {val}
+                                                        </Select.Option>
+                                                    ))
+                                                }
+                                                
+                                            </Select>
+                                        :
+                                        <Select
+                                            allowClear
+                                            showSearch
+                                            loading={selectLoading}
+                                            value={objArr && objArr[item.value]}
+                                            style={{ width: '100%' }}
+                                            notFoundContent={selectLoading ? <Spin size="small" /> : null}
+                                            onChange={(val) => onChangeHandler(val,item.value)}
+                                            >
+                                            {
+                                                selectLoading ?
+                                                    <Select.Option style={{textAlign: 'center'}}> 
+                                                        <Spin size="small" />
+                                                    </Select.Option>
+                                                : item.filterList?.map((val, index) => (
+                                                    <Select.Option value={val} key={index}> 
+                                                        {val}
+                                                    </Select.Option>
+                                                ))
+                                            }
+                                            
+                                        </Select>
+                                    }
+                                    
                                 </div>
                             </>
                         )

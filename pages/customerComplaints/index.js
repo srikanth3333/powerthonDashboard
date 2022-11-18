@@ -12,8 +12,7 @@ export default function index() {
 
   let dispatch = useDispatch()
   let data = useSelector((state) => state.billComplaints)
-  let filtersData = useSelector((state) => state.auth)
-
+  let filtersData = useSelector((state) => state.hierarchy)
 
   let apiObject = {page:0,startDate:'',endDate:'',category:'',circle_name:'',division_name:'',subdivision_name:'',minutes:''}
 
@@ -39,11 +38,12 @@ export default function index() {
               finalCount={data.totalCount}
               objectData={apiObject}
               paginateApi={getComplaints}
-              flag={"Circle"}
+              db="bill_complaint_ivrs_mobileno"
+              selectLoading={filtersData.loading}
               data={[
-                {label:"Circle",type:"select",value:"circle_name",filterList:filtersData.circleData,selected:filtersData.selectedCategory},
-                {label:"Division",type:"select",value:"division_name",filterList:filtersData.divisionData,selected:filtersData.selectedCircle},
-                {label:"Sub Division",type:"select",value:"subdivision_name",filterList:filtersData.subdivisionData,selected:filtersData.selectedDivision},
+                {label:"Circle",type:"select",value:"circle_name",filterList:filtersData.data[0]?.circle_name},
+                {label:"Division",type:"select",value:"division_name",filterList:filtersData.data[0]?.division},
+                {label:"Sub Division",type:"select",value:"subdivision_name",filterList:filtersData.data[0]?.subdivision},
                 {label:"Start Date",type:"date",value:"startDate"},
                 {label:"End Date",type:"date",value:"endDate"},
                 {label:"Resolution Time",type:"text",value:"minutes"},

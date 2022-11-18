@@ -12,7 +12,6 @@ export default function index() {
     let data = useSelector((state) => state.billing)
     let filtersData = useSelector((state) => state.auth)
 
-
     let apiObject = {page:0,startDate:'',endDate:'',consumerNo:'',circle_name:'',division_name:'',region:'',divisionId:''}
 
     useEffect(() => {
@@ -37,13 +36,13 @@ export default function index() {
                 finalCount={data.totalCount}
                 objectData={apiObject}
                 paginateApi={getBlillingData}
-                flag={"Circle"}
+                staticData={true}
                 data={[
+                  {label:"Division",type:"select",value:"division_name",filterList:filtersData.bill_division},
                   {label:"Zone",type:"select",value:"circle_name",filterList:filtersData.zone},
-                  {label:"Division",type:"select",value:"division_name",filterList:filtersData.billingDivision},
+                  {label:"Consumer No",type:"text",value:"consumerNo"},
                   {label:"Start Date",type:"date",value:"startDate"},
                   {label:"End Date",type:"date",value:"endDate"},
-                  {label:"Consumer No",type:"text",value:"consumerNo"},
                 ]} 
                 title="Billing Information"
               />

@@ -1,4 +1,5 @@
 import { connectToDatabase } from "../../../lib/mongodb";
+import cacheData from "memory-cache";
 
 export default async function handler(req, response) {
     
@@ -7,6 +8,8 @@ export default async function handler(req, response) {
     if(req.method === "POST") {
       let query = {}
       let page = req.query.page;
+
+
       console.log(req.body)
       if (req.body.startDate && req.body.startDate != null) {
         query = {...query, "bill_month": {$gt:new Date(req.body.startDate)}};

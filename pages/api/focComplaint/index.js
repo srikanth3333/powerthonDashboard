@@ -13,8 +13,8 @@ export default async function handler(req, response) {
         query = {...query, "complaint_reg_dt": {$gte:new Date(req.body.startDate)}};
       }
   
-      if(req.body.category) {
-        query = {...query, "feeder_type": req.body.category};
+      if(req.body.feeder_type) {
+        query = {...query, "feeder_type": req.body.feeder_type};
       }
   
       if(req.body.circle_name) {

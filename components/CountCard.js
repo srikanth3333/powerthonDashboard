@@ -1,8 +1,25 @@
-import { PieChartOutlined } from '@ant-design/icons';
-import { Skeleton } from 'antd';
+import Icon, { PieChartOutlined,ProjectFilled,ThunderboltFilled,
+    SignalFilled,ReconciliationFilled,CloudFilled,
+    ContainerFilled,ControlFilled,CompassFilled,
+    DashboardFilled,BookFilled } from '@ant-design/icons';
+import { Skeleton} from 'antd';
 
+let icons = [
+    "ProjectFilled",
+    "ThunderboltFilled",
+    "SignalFilled",
+    "ReconciliationFilled",
+    "CloudFilled",
+    "ContainerFilled",
+    "ControlFilled",
+    "CompassFilled",
+    "DashboardFilled",
+    "BookFilled",
+    "PieChartOutline"
+]
 
 function CountCard({data,loading}) {
+    
   return (
     <>
         <div className="row mt-4">
@@ -25,12 +42,13 @@ function CountCard({data,loading}) {
                     <div className="col-lg-4" key={i}>
                         <div className={i >= 3 ? "card mt-3 shadow" : "card shadow"}>
                             <div className="card-body">
-                                <div className="d-flex align-items-center justify-content-between">
+                                <div className="d-flex count-card-icon align-items-center justify-content-between">
                                     <div>
                                         <p className="count-name">{list.name}</p>
                                         <p className="count-count">{list.count}</p>
                                     </div>
                                     <PieChartOutlined className="count-icon" twoToneColor="#F7C514" />
+                                    {/* <Icon component={<ProjectFilled />}  /> */}
                                 </div>
                             </div>
                         </div>

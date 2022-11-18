@@ -11,7 +11,8 @@ export default function index() {
 
   let dispatch = useDispatch()
   let data = useSelector((state) => state.focData)
-  let filtersData = useSelector((state) => state.auth)
+  let filtersData = useSelector((state) => state.hierarchy)
+
 
   let apiObject = {page:0,startDate:'',endDate:'',category:'',circle_name:'',division_name:'',subdivision_name:'',minutes:''}
 
@@ -38,12 +39,13 @@ export default function index() {
                 finalCount={data.totalCount}
                 objectData={apiObject}
                 paginateApi={getFocData}
-                flag={"Category"}
+                db="FOC_ivrs_mobileno"
+                selectLoading={filtersData.loading}
                 data={[
-                  {label:"Category",type:"select",value:"category",filterList:filtersData.category,selected:filtersData.selectedCategory},
-                  {label:"Circle",type:"select",value:"circle_name",filterList:filtersData.circleData,selected:filtersData.selectedCategory},
-                  {label:"Division",type:"select",value:"division_name",filterList:filtersData.divisionData,selected:filtersData.selectedCircle},
-                  {label:"Sub Division",type:"select",value:"subdivision_name",filterList:filtersData.subdivisionData,selected:filtersData.selectedDivision},
+                  {label:"Category",type:"select",value:"feeder_type",filterList:filtersData.data[0]?.feeder_type},
+                  {label:"Circle",type:"select",value:"circle_name",filterList:filtersData.data[0]?.circle_name},
+                  {label:"Division",type:"select",value:"division_name",filterList:filtersData.data[0]?.division},
+                  {label:"Sub Division",type:"select",value:"subdivision_name",filterList:filtersData.data[0]?.subdivision},
                   {label:"Start Date",type:"date",value:"startDate"},
                   {label:"End Date",type:"date",value:"endDate"},
                   {label:"Resolution Time",type:"text",value:"minutes"},
