@@ -60,7 +60,7 @@ function HomeCard({title,countArray}) {
                     {
                         countArray && countArray.map((item,index) => (
                             <div className="col-lg-6 mt-3" key={index}>
-                                <div className="box-card color-yellow">
+                                <div className={index % 3 == 0 ? `box-card color-yellow` : `box-card color-grey`}>
                                     <h5 className="box-card-title">{item.count}</h5>
                                     <h5 className="box-card-text">{item.name}</h5>
                                 </div>

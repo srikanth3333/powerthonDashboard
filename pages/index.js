@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react';
 import HomeCard from "../components/HomeCard"
-
+import FilterCard from "../components/FilterCard"
 
 export default function Home() {
 
