@@ -47,7 +47,7 @@ export default function index() {
                   {label:"Start Date",type:"date",value:"startDate"},
                   {label:"End Date",type:"date",value:"endDate"},
                 ]} 
-                title="Billing Information"
+                title="Billing Data"
               />
               <TableData 
                 data={data} 

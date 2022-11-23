@@ -25,7 +25,7 @@ let listItems = [
         link: '/customerComplaints'
     },
     {
-        label: 'Payments',
+        label: 'Payments Data',
         link: '/payments'
     },
 ]

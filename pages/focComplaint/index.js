@@ -50,7 +50,7 @@ export default function index() {
                   {label:"End Date",type:"date",value:"endDate"},
                   {label:"Resolution Time",type:"text",value:"minutes"},
                 ]} 
-                title="FOC Complaints"
+                title="FOC Complaints Data"
               />
               <TableData 
                 data={data} 

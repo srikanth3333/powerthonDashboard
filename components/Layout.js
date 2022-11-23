@@ -37,7 +37,6 @@ function Layout({children}) {
                             <Sidebar targetReached={targetReached} activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar} />
                         </div> : null
                     }
-                    
                     <div className="content">
                         <Header targetReached={targetReached} activeSidebar={activeSidebar} setActiveSidebar={setActiveSidebar}   />
                         {children}

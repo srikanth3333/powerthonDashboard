@@ -43,7 +43,7 @@ export default function index() {
                 //   {label:"End Date",type:"date",value:"endDate"},
                   {label:"Consumer Number",type:"text",value:"consumerNo"},
                 ]} 
-                title="FOC Complaints"
+                title="Payments Data"
               />
               <TableData 
                 data={data} 

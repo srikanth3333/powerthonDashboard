@@ -16,7 +16,7 @@ function Header({activeSidebar,setActiveSidebar,targetReached}) {
             <div>
                 {
                     targetReached == true ?
-                    <AlignLeftOutlined className="icon" onClick={() => setActiveSidebar(!activeSidebar)} />
+                        <AlignLeftOutlined className="icon" onClick={() => setActiveSidebar(!activeSidebar)} />
                     : null
                 }
                 <Breadcrumb className="text-white">
@@ -24,10 +24,10 @@ function Header({activeSidebar,setActiveSidebar,targetReached}) {
                         <Link href="/" className="text-white">{'Home'}</Link>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        <Link href="" className="text-white">{name}</Link>
+                        {/* <Link href="" className="text-white">{name}</Link> */}
                     </Breadcrumb.Item>
                 </Breadcrumb>
-                <h4 className="color-purple">{name}</h4>
+                {/* <h4 className="color-purple">{name}</h4> */}
             </div>
             <div className="d-flex align-items-center">
                 <div className="me-3">
