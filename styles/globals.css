@@ -60,6 +60,19 @@ p {
   width: 70%;
 }
 
+.sidebar {
+  position: fixed; 
+  top:40;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+
+
+.content-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar .list-items .list-item {
   list-style-type: none;
   padding: 1em 1em;
