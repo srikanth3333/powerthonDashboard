@@ -17,6 +17,7 @@ export const getHierarchyData = createAsyncThunk('HierarchyData/getHierarchyData
         }
         return await axios.post(`/api/hierarchy`,data)
         .then(res => {
+            console.log(res)
             return{data:res.data}
         })
         .catch(err => {

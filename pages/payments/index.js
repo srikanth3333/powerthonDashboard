@@ -39,8 +39,8 @@ export default function index() {
                 paginateApi={getPaymentsData}
                 flag={"Category"}
                 data={[
-                //   {label:"Start Date",type:"date",value:"startDate"},
-                //   {label:"End Date",type:"date",value:"endDate"},
+                  {label:"Start Date",type:"date",value:"startDate"},
+                  {label:"End Date",type:"date",value:"endDate"},
                   {label:"Consumer Number",type:"text",value:"consumerNo"},
                 ]} 
                 title="Payments Data"

@@ -65,7 +65,7 @@ export default async function handler(req, response) {
               }}, 
             {$project: {_id:0, division:1, subdivision:1, category:1, sub_category:1, 
               circle_name:1, region:1, dc_name:1,feeder_type:1,bill_division:1,zone:1}}
-      ]).toArray();
+      ],{allowDiskUse:true}).toArray();
       // cacheData.put(dbName, data, 100)
       return response.status(200).send(data);
     }
