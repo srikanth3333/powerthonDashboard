@@ -6,7 +6,7 @@ export const getPaymentsData = createAsyncThunk('payment/payments',
         let data = {
             startDate:payload.startDate,
             endDate:payload.endDate,
-            consumerNo:payload.consumerNo,
+            consumerNo:parseInt(payload.consumerNo),
         }
 
         return await axios.post(`/api/payments?page=${payload.page}`,data)
