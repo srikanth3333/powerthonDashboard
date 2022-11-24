@@ -9,16 +9,12 @@ export default async function handler(req, response) {
       let query = {}
       let page = req.query.page;
   
-      if (req.body.startDate && req.body.startDate != null) {
-        query = {...query, "posting_date": {$gte:new Date(req.body.startDate)}};
-      }
-  
       if(req.body.consumerNo) {
         query = {...query, "consumer_no": req.body.consumerNo};
       }
   
-      if (req.body.endDate && req.body.endDate != null) {
-        query = {...query, "posting_date": {$lte:new Date(req.body.endDate)}};
+      if (req.body.startDate && req.body.startDate != null) {
+        query = {...query, "posting_date": {$gte:new Date(req.body.startDate)}};
       }
   
       if (req.body.endDate && req.body.endDate != null) {

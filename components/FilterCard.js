@@ -67,7 +67,8 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
                                 <div className="col-lg-3">
                                     <label htmlFor="">{item.label}</label>
                                     <Input placeholder={item.label} 
-                                            allowClear
+                                           allowClear
+                                           value={objArr && objArr[item.value]}
                                            onChange={(val) => onChangeHandler(val.target.value,item.value)} 
                                     />
                                 </div>
@@ -132,6 +133,7 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
                                     <label htmlFor="">{item.label}</label>
                                     <DatePicker  
                                         allowClear
+                                        value={objArr && objArr[item.value] !== "" ? moment(objArr && objArr[item.value]) : null}
                                         format="DD-MM-YYYY" 
                                         style={{width:'100%'}} 
                                         onChange={(date,dateString) => {
