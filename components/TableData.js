@@ -72,7 +72,7 @@ function TableData({data,paginateApi,filters,paginate}) {
               columns={lp}
               dataSource={data.data}
               scroll={{
-                x: 1300,
+                x: 600,
                 y: 300,
               }}
               pagination={paginate == true ? {

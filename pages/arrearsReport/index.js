@@ -59,6 +59,7 @@ export default function index() {
           loading={data.loading}
           data={[
             {name:'Consumer Count',count:totalCounts.count},
+            // {name:'Arrears Amount',count:totalCounts.totalArrearsCount},
           ]} />
         <div className="card mt-3">
           <div className="card-body">
