@@ -28,6 +28,10 @@ let listItems = [
         label: 'Payments Data',
         link: '/payments'
     },
+    {
+        label: 'Arrears Report',
+        link: '/arrearsReport'
+    },
 ]
 
 function Sidebar({activeSidebar,setActiveSidebar,targetReached}) {

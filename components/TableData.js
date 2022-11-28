@@ -44,6 +44,7 @@ function TableData({data,paginateApi,filters,paginate}) {
           textWrap: 'word-break',
           ellipsis: true,
           // fixed: i < 1 ? 'left' : null,
+          sorter: true,
           render: (val) => (
             <>
               {

@@ -12,7 +12,7 @@ export default function index() {
     let data = useSelector((state) => state.billing)
     let filtersData = useSelector((state) => state.auth)
 
-    let apiObject = {page:0,startDate:'',endDate:'',consumerNo:'',circle_name:'',division_name:'',region:'',divisionId:''}
+    let apiObject = {page:0,startDate:'',endDate:'',consumerNo:'',circle_name:'',division_name:'',region:'',divisionId:'',sortId:''}
 
     useEffect(() => {
         dispatch(getBlillingData(apiObject))

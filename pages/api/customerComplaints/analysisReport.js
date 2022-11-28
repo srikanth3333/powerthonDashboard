@@ -52,7 +52,6 @@ export default async function handler(req, response) {
 
       console.log(query)
 
-      console.log(query)
       
       let totalCount = await collection.find(query).count();
       let data = await collection.aggregate(
@@ -66,7 +65,8 @@ export default async function handler(req, response) {
                     $cond: { if: { $lt: [ "$delay", 7200 ] }, then: 1, else: 0 },
                 }},
                 count:{$sum:1}}},
-                {$project: {_id:1,complaint_Greater_Than_Days:1,complaint_Less_Than_Days:1,count:1,percentage:{$round:{$multiply:[{$divide:["$count",totalCount]},100]}}}}
+                {$project: {_id:1,complaint_Greater_Than_Days:1,complaint_Less_Than_Days:1,count:1,
+                  percentage:{$round:{$multiply:[{$divide:["$count",totalCount]},100]}}}}
         ]).toArray();
         Promise.all([totalCount,data]).then(() => response.status(200).json({totalCount: totalCount,data: data}))
     }

@@ -3,6 +3,8 @@ import axios from 'axios';
 
 export const getBlillingData = createAsyncThunk('billing/getBlillingData', 
 	async (payload, {getState}) => {
+        console.log('payload')
+        console.log(payload)
         let data = {
             startDate:payload.startDate,
             endDate:payload.endDate,
@@ -10,8 +12,10 @@ export const getBlillingData = createAsyncThunk('billing/getBlillingData',
             division_name:payload.division_name,
             region:payload.region,
             divisionId:payload.divisionId,
-            circle_name:payload.circle_name
+            circle_name:payload.circle_name,
+            sortId:payload.sortId
         }
+        
         return await axios.post(`/api/billingInformation?page=${payload.page}`,data)
         .then(res => {
             console.log('res')

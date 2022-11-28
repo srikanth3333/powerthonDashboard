@@ -9,7 +9,6 @@ export default async function handler(req, response) {
       let query = {}
       let page = req.query.page;
 
-      console.log(req.body)
       if (req.body.startDate && req.body.startDate != null) {
         query = {...query, "bill_month": {$gte:new Date(req.body.startDate)}};
       }
