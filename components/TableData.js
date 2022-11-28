@@ -10,7 +10,7 @@ import {addFilters} from "../redux/auth/userSlice";
 const Str = require('@supercharge/strings')
 
 
-function TableData({data,paginateApi,filters,paginate}) {
+function TableData({data,paginateApi,filters,paginate,year}) {
 
   let filtersData = useSelector((state) => state.auth)
   let dispatch = useDispatch()
@@ -51,8 +51,14 @@ function TableData({data,paginateApi,filters,paginate}) {
                   moment(val, moment.ISO_8601, true).isValid() && val != null && typeof val !== 'number'
                   ?
                       <>
-                          <Moment format="DD/MM/YYYY">{val}</Moment> <br />
-                          <Moment format="hh:mm:ss A">{val}</Moment>
+                        {year == true ?
+                            <Moment format="YYYY">{val}</Moment>
+                         :
+                          <>
+                            <Moment format="DD/MM/YYYY">{val}</Moment> <br />
+                            <Moment format="hh:mm:ss A">{val}</Moment>
+                          </>
+                        }
                       </>
                   :
                       val
@@ -72,7 +78,7 @@ function TableData({data,paginateApi,filters,paginate}) {
               columns={lp}
               dataSource={data.data}
               scroll={{
-                x: 600,
+                x: 500,
                 y: 300,
               }}
               pagination={paginate == true ? {

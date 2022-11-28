@@ -8,10 +8,6 @@ export default async function handler(req, response) {
     if(req.method === "POST") {
       let query = {}
       let page = req.query.page;
-
-      if (req.body.startDate && req.body.startDate != null) {
-        query = {...query, "bill_month": {$gte:new Date(req.body.startDate)}};
-      }
   
       if(req.body.consumer_no) {
         query = {...query, "consumer_no": req.body.consumer_no};
@@ -35,6 +31,10 @@ export default async function handler(req, response) {
 
       if(req.body.divisionId) {
         query = {...query, "Div_Id": parseInt(req.body.divisionId)};
+      }
+
+      if (req.body.startDate && req.body.startDate != null) {
+        query = {...query, "bill_month": {$gte:new Date(req.body.startDate)}};
       }
   
       if (req.body.endDate && req.body.endDate != null) {

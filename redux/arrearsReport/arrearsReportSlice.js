@@ -4,6 +4,8 @@ import axios from 'axios';
 export const getArrearsReport = createAsyncThunk('arrears/getArrearsReport', 
 	async (payload, {getState}) => {
         let data = {
+            startDate:payload.startDate,
+            endDate:payload.endDate,
             "division": payload.division,
             "month":payload.month
         }

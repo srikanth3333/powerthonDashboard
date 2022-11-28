@@ -84,6 +84,7 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
                                         ?
                                             <Select
                                                 allowClear
+                                                placeholder={item.label}
                                                 showSearch
                                                 value={objArr && objArr[item.value]}
                                                 style={{ width: '100%' }}

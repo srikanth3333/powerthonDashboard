@@ -10,7 +10,7 @@ export default function index() {
 
     let dispatch = useDispatch()
     let data = useSelector((state) => state.arrears)
-    let apiObject = {division:'',month:''}
+    let apiObject = {division:'',month:'',startDate:'',endDate:''}
 
     useEffect(() => {
         dispatch(getArrearsReport(apiObject))
@@ -69,13 +69,16 @@ export default function index() {
                     download={false}
                     dataDownload={data} 
                     data={[
-                    {label:"Divison",type:"select",value:"division",filterList:divisionList},
-                    {label:"Month",type:"select",value:"month",filterList:monthList},
+                        {label:"Divison",type:"select",value:"division",filterList:divisionList},
+                        {label:"Month",type:"select",value:"month",filterList:monthList},
+                        {label:"Start Date",type:"date",value:"startDate"},
+                        {label:"End Date",type:"date",value:"endDate"},
                     ]} 
-                    title="Complaints Analysis"
+                    title="Arrears Report"
                 />
               <TableData 
                 data={data} 
+                year={true}
                 filters={{}}
                 paginate={false}
               />
