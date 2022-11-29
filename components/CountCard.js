@@ -2,7 +2,7 @@ import Icon, { PieChartOutlined,ProjectFilled,ThunderboltFilled,
     SignalFilled,ReconciliationFilled,CloudFilled,
     ContainerFilled,ControlFilled,CompassFilled,
     DashboardFilled,BookFilled } from '@ant-design/icons';
-import { Skeleton} from 'antd';
+import { Skeleton, Popover} from 'antd';
 
 let icons = [
     "ProjectFilled",
@@ -25,18 +25,20 @@ function CountCard({data,loading}) {
         <div className="row mt-4">
             {
                 loading ?
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body">
-                                <Skeleton active 
-                                    paragraph={{
-                                        rows: 1,
-                                    }}
-                                    size="small"
-                                />
+                    data.map((list,index) => (
+                        <div className="col-lg-4">
+                            <div className="card">
+                                <div className="card-body">
+                                    <Skeleton active 
+                                        paragraph={{
+                                            rows: 1,
+                                        }}
+                                        size="small"
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    ))
                 :
                 data.map((list,i) => (
                     <div className="col-lg-4" key={i}>
@@ -44,8 +46,12 @@ function CountCard({data,loading}) {
                             <div className="card-body">
                                 <div className="d-flex count-card-icon align-items-center justify-content-between">
                                     <div>
-                                        <p className="count-name">{list.name}</p>
-                                        <p className="count-count">{list.count}</p>
+                                        <Popover content={list.name} title="Name">
+                                            <p className="count-name">{list.name}</p>
+                                        </Popover>
+                                        <Popover content={Math.round(list.count)} title="Count">
+                                            <p className="count-count">{Math.round(list.count)}</p>
+                                        </Popover>
                                     </div>
                                     <PieChartOutlined className="count-icon" twoToneColor="#F7C514" />
                                     {/* <Icon component={<ProjectFilled />}  /> */}

@@ -7,6 +7,7 @@ import analysisReducer from "./cutomerComplaints/customerAnalysisReport";
 import paymentsReducer from "./payments/paymentsSlice";
 import hierarchyReducer from "./hierarchy/hierarchySlice";
 import arrearsReportReducer from "./arrearsReport/arrearsReportSlice";
+import consumerReportReducer from "./divisionConsumerReport/consumerReportSlice";
 
 export default configureStore({
 	reducer: {
@@ -17,6 +18,7 @@ export default configureStore({
 		complaintsAnalysis:analysisReducer,
 		payments:paymentsReducer,
 		hierarchy:hierarchyReducer,
-		arrears:arrearsReportReducer
+		arrears:arrearsReportReducer,
+		consumerReport:consumerReportReducer
 	},
 });

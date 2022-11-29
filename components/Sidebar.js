@@ -32,6 +32,10 @@ let listItems = [
         label: 'Arrears Report',
         link: '/arrearsReport'
     },
+    {
+        label: 'Consumer Report',
+        link: '/divisionConsumerReport'
+    },
 ]
 
 function Sidebar({activeSidebar,setActiveSidebar,targetReached}) {

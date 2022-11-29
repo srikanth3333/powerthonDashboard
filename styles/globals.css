@@ -140,14 +140,21 @@ p {
   font-size: 24px;
   line-height: 29px;
   color: #000000;
+  white-space: nowrap; 
+  width: 180px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .count-count {
   font-weight: 700;
   font-size: 34px;
   line-height: 41px;
-
   color: #3A116D;
+  white-space: nowrap; 
+  width: 200px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .px-login {

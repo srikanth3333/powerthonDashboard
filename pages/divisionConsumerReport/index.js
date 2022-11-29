@@ -3,28 +3,28 @@ import Head from 'next/head';
 import CountCard from '../../components/CountCard';
 import FilterCard from '../../components/FilterCard';
 import TableData from "../../components/TableData";
-import {getArrearsReport} from "../../redux/arrearsReport/arrearsReportSlice";
+import {getConsumerReport} from "../../redux/divisionConsumerReport/consumerReportSlice";
 import {useSelector,useDispatch} from 'react-redux';
 
 export default function index() {
 
     let dispatch = useDispatch()
-    let data = useSelector((state) => state.arrears)
+    let data = useSelector((state) => state.consumerReport)
     let apiObject = {division:'',month:'',startDate:'',endDate:''}
 
     useEffect(() => {
-        dispatch(getArrearsReport(apiObject))
+        dispatch(getConsumerReport(apiObject))
     },[])
 
 
     let totalCounts = data.data && data.data.reduce((previousValue,currentValue) => {
-
+        console.log(currentValue)
         return {
-            "count": previousValue.count + currentValue.count,
-            "totalArrearsCount": previousValue.totalArrearsCount +
-             currentValue.totalArrearsCount
+            "consumer": previousValue.consumer + currentValue.consumer,
+            "arrear": previousValue.arrear +
+             currentValue.arrear
         }
-    },{count:0,totalArrearsCount:0})
+    },{consumer:0,arrear:0})
 
     let monthList = [
          "December",
@@ -51,21 +51,21 @@ export default function index() {
   return (
     <div>
       <Head>
-        <title>Arrears Report</title>
+        <title>Consumer Report</title>
         <meta name="description" content="Powerthon" />
       </Head>
       <div className="count-card">
         <CountCard 
           loading={data.loading}
           data={[
-            {name:'Consumer Count',count:totalCounts.count},
-            {name:'Arrears Amount',count:totalCounts.totalArrearsCount},
+            {name:'Consumer Count',count:totalCounts.consumer},
+            {name:'Arrears Amount',count:totalCounts.arrear},
           ]} />
         <div className="card mt-3">
           <div className="card-body">
             <FilterCard 
                     objectData={apiObject}
-                    paginateApi={getArrearsReport}
+                    paginateApi={getConsumerReport}
                     download={false}
                     dataDownload={data} 
                     data={[
@@ -74,7 +74,7 @@ export default function index() {
                         {label:"Start Date",type:"date",value:"startDate"},
                         {label:"End Date",type:"date",value:"endDate"},
                     ]} 
-                    title="Arrears Report"
+                    title="Consumer Report"
                 />
               <TableData 
                 data={data} 

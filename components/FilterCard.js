@@ -139,8 +139,6 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
                                         style={{width:'100%'}} 
                                         onChange={(date,dateString) => {
                                             let finalDate = moment(date).format('YYYY-MM-DD');;
-                                            console.log('finalDate');
-                                            console.log(finalDate);
                                             return onChangeHandler(finalDate,item.value)
                                         }} />
                                 </div>
@@ -151,8 +149,7 @@ function FilterCard({title,objectData,paginateApi,data,finalCount,
             }
             <div className="col-lg-3">
                 <label htmlFor="">&nbsp;</label>
-                <br />
-                <Button type="danger" onClick={handleReset}>
+                <Button type="danger" className="mt-2" onClick={handleReset}>
                     Reset Filters
                 </Button>
             </div>
